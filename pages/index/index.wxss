@@ -1,22 +1,59 @@
 /**index.wxss**/
+Page{
+  background:#f3f5fa;
+  font-family:'PingFang SC Medium',  "微软雅黑";
+}
+
+.com{
+  width: 82%;
+  border:#888;
+   margin-top: 50px; 
+  box-shadow: 5px 5px 5px #f1f1f1;
+  height: 700rpx;
+  background: white;
+}
+
  .userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width:148rpx;
+  height:148rpx;
+  margin:-37px auto 0rpx;
+  text-align: center;
+  background:white;
+  border-radius:50%;
 }
 
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
+  margin: 10rpx;
   border-radius: 50%;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.HotMoney_box{
+  width: 100%;
+  overflow: hidden;
+  text-align:center;
+  letter-spacing:1px;
+}
+.HotMoney_box input{
+  border-bottom: 1px solid #d5d5d5;
+  margin-top:20rpx;
+}
+.setHotMoney_detail{
+  height:110rpx;
+  line-height:110rpx; 
+  font-weight:bold;
+  font-size:28rpx;
+  margin:0 30px;
+}
+.topay{
+  border-radius: 23px;
+  color: white;
+  width: 80%;
+  margin: 20px auto;
 }
 
-.usermotto {
-  margin-top: 100px;
-  /* background: url("../img/bg.jpg"); */
-} 
+.notice{
+  color: #888;
+  margin-top: 30px;
+}

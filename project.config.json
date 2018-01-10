@@ -1,15 +1,11 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/zxy7/wxApplets.git"
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",

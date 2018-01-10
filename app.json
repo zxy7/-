@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/money/money",
     "pages/logs/logs"
   ],
   "window":{
@@ -10,12 +11,26 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "black",
+    "borderStyle":"white",
+    "backgroundColor":"#fff",
     "list": [
       {
+        "iconPath": "img/icon_normal.png",
+        "selectedIconPath": "img/icon_pressed.png",
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "我的记录"
       },
       {
+        "iconPath": "img/icon_normal.png",
+        "selectedIconPath": "img/icon_pressed.png",
+        "pagePath": "pages/money/money",
+        "text": "余额提现"
+      },
+      {
+        "iconPath": "img/icon_normal.png",
+        "selectedIconPath": "img/icon_pressed.png",
         "pagePath": "pages/logs/logs",
         "text": "日志"
       }
