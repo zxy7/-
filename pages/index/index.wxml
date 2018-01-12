@@ -20,8 +20,8 @@
           <input type='number' placeholder='填写数量' class='hotInput fr'
                   bindinput='NumberInput'></input>
         </view>
-        <view class="notice">需支付￥0.0服务费,优先使用余额</view>
-        <button class="commonbgColor topay" bindtap="topay"> 生成语音口令 </button>
+        <view class="notice">需支付￥{{earn}}服务费,优先使用余额￥{{restMoney}}</view>
+        <button class="commonbgColor topay" bindtap="topay"> {{buttonName}} </button>
     </view>
  </view>
 </view>

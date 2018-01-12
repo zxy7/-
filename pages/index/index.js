@@ -8,6 +8,9 @@ Page({
     kouling: '',
     Money: 0,
     Number: 0,
+    restMoney:2.0,
+    earn: 0.0,
+    buttonName:'生成语音口令'
   },
   //事件处理函数
   topay:function(){
@@ -41,7 +44,9 @@ Page({
   MoneyInput: function (e) {
     var that = this;
     that.setData({
-      Money: parseInt(e.detail.value),
+      Money: parseFloat(e.detail.value),
+      earn: e.detail.value ? ( parseFloat(e.detail.value) * 0.02).toFixed(2) : '0.0',
+      buttonName: e.detail.value ? '还需支付' + ((parseFloat(e.detail.value) * 1.02).toFixed(2) > that.data.restMoney ? (parseFloat(e.detail.value) * 1.02).toFixed(2) - that.data.restMoney:'0.0')+ '元' :'生成语音口令'
     })
   },
   NumberInput: function (e) {
