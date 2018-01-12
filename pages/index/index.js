@@ -1,22 +1,24 @@
 //index.js
 //获取应用实例
 var app = getApp()
+var Show = require("./../component/alert.js");
 Page({
   data: {
     userInfo: {},
-    // staffA: { firstName: 'Hulk', lastName: 'Hu' },
-    // array: [1, 2, 3, 4, 5],
-    kouling: '0',
-    Money: '0',
-    Number: '0',
+    kouling: '',
+    Money: 0,
+    Number: 0,
   },
   //事件处理函数
   topay:function(){
-    console.log(1);
+    if (this.data.Money < 1)
+      Show.alertShow(this, "info", "最小金额1元");
+    if (this.data.Number < 1)
+      Show.alertShow(this, "info", "最小数量为1");
     // wx.switchTab({
     //   url: '../money/money'
-    // })
-    console.log(2,this.data);
+    // })s
+    console.log(this.data);
   },
   onLoad: function () {
     console.log('onLoad')
@@ -32,25 +34,20 @@ Page({
   // 获取页面填入的值
   koulingInput: function (e) {
     var that = this;
-    console.log(e.detail.value)
     that.setData({
-      kouling: e.target.value,
+      kouling: e.detail.value,
     })
-
-    console.log(this.data.kouling)
   },
   MoneyInput: function (e) {
     var that = this;
-    console.log(e.detail.value)
     that.setData({
-      Money: e.target.value,
+      Money: parseInt(e.detail.value),
     })
   },
   NumberInput: function (e) {
     var that = this;
-    console.log(e.detail.value)
     that.setData({
-      Number: e.target.value,
+      Number: parseInt(e.detail.value),
     })
   },
 })
