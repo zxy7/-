@@ -9,7 +9,7 @@ function alertShow(that, iconType, alertlable) {
     that.setData({
       isAlert: false
     })
-  }, 15000)
+  }, 1500)
 }
 module.exports = {
   alertShow: alertShow
