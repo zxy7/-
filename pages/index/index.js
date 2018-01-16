@@ -34,6 +34,14 @@ Page({
       })
     })
   },
+  // 跳转链接
+  tomyRecord: function () {
+    var that = this;
+    wx.navigateTo({
+      url: './myrecord/myrecord',
+    })
+
+  },
   // 获取页面填入的值
   koulingInput: function (e) {
     var that = this;

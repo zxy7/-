@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class='com'>
-    <view  class="userinfo">
+    <view  class="userinfo"  bindtap='tomyRecord'>
      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     </view>
     <view class="HotMoney_box">

@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/money/money",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/index/myrecord/myrecord"
   ],
   "window":{
     "backgroundTextStyle":"light",
