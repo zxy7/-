@@ -24,3 +24,12 @@
 .overF{
   overflow: hidden;
 }
+.header{
+  width:110rpx;
+  height:110rpx;
+  border:10rpx;
+  border-radius:50%;
+}
+.inline{
+  display: inline-block;
+}
