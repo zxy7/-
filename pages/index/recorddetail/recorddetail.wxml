@@ -38,7 +38,7 @@
       <view class='peopleMoney_center fl'>
         <text class='people_NickName'>{{userInfo.nickName}}</text>
         <icon></icon>
-        <view class='yuying_time'>2"</view>
+        <view class='yuying_time' bindtap='playvoice'>2"</view>
       </view>
       <view class='peopleMoney_right fr'>
         <view class='yuying_time_right'>

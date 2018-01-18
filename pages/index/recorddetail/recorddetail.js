@@ -8,7 +8,8 @@ Page({
   data: {
     userInfo: [],
     houBaoStyle: 1,
-    speak:0
+    speak:0,
+    tempFilePath:"http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46"
   },
 
   /**
@@ -25,7 +26,13 @@ Page({
   toshareChat: function () {
 
   },
+  playvoice:function(){
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+    backgroundAudioManager.src = this.data.tempFilePath 
+
+  },
   speaking: function (){
+    var that = this;
     const recorderManager = wx.getRecorderManager()
 
     recorderManager.onStart(() => {
@@ -39,7 +46,30 @@ Page({
     })
     recorderManager.onStop((res) => {
       console.log('recorder stop', res)
+      wx.request({
+        url: 'test.php', //仅为示例，并非真实的接口地址
+        data: {
+          x: '',
+          y: ''
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+        }
+      })
       const { tempFilePath } = res
+      that.setData({
+        tempFilePath: tempFilePath,
+      })
+      wx.saveFile({
+        tempFilePath: tempFilePath,
+        success: function (res) {
+          var savedFilePath = res.savedFilePath
+          console.log(savedFilePath)
+        }
+      })
     })
     recorderManager.onFrameRecorded((res) => {
       const { frameBuffer } = res
