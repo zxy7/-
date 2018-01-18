@@ -53,7 +53,7 @@ Page{
   color:#fff;
   background: #31bd48;
   border-radius:45rpx;
-  margin-top:50rpx;
+  margin:50rpx auto;
 }
 .caozuoShare{
   width:690rpx;
