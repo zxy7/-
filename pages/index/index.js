@@ -32,6 +32,7 @@ Page({
       that.setData({
         userInfo:userInfo
       })
+      console.dir(userInfo)
     })
   },
   // 跳转链接

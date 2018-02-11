@@ -47,7 +47,7 @@ Page({
     recorderManager.onStop((res) => {
       console.log('recorder stop', res)
       wx.request({
-        url: 'test.php', //仅为示例，并非真实的接口地址
+        url: 'http://localhost:8080/springmvc/test/1', //仅为示例，并非真实的接口地址
         data: {
           x: '',
           y: ''
