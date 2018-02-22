@@ -10,18 +10,37 @@ Page({
     Number: 0,
     restMoney:2.0,
     earn: 0.0,
-    buttonName:'生成语音口令'
+    buttonName:'生成语音口令',
   },
   //事件处理函数
-  topay:function(){
+  topay: function () {
+    wx.switchTab({
+      url: './recorddetail/recorddetail'
+    })
     if (this.data.Money < 1)
       Show.alertShow(this, "info", "最小金额1元");
     if (this.data.Number < 1)
       Show.alertShow(this, "info", "最小数量为1");
-    // wx.switchTab({
-    //   url: '../money/money'
-    // })s
+    
     console.log(this.data);
+    wx.request({
+      url: 'http://169.254.212.234:8080/springmvc/saverecord', 
+      method: 'post',
+      data: {
+        userid: this.data.userid,
+        kouling: this.data.kouling,
+        money: this.data.Money,
+        number: this.data.Number,
+        restmoney: this.data.Money,
+        restnumber: this.data.Number,
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   },
   onLoad: function () {
     console.log('onLoad')
@@ -33,6 +52,7 @@ Page({
         userInfo:userInfo
       })
       console.dir(userInfo)
+
     })
   },
   // 跳转链接
