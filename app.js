@@ -36,9 +36,10 @@ App({
                     header: {
                       'content-type': 'application/json' // 默认值
                     },
-                    success: function (res) {
+                    success: function (res3) {
+                      console.log()
                       that.setData({
-                        userid: res.data.data
+                        userid: res3.data.data
                       })
                     }
                   })
