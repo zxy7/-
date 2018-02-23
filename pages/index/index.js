@@ -5,6 +5,7 @@ var Show = require("./../component/alert.js");
 Page({
   data: {
     userInfo: {},
+    userid:'',
     kouling: '',
     Money: 0,
     Number: 0,
@@ -14,45 +15,44 @@ Page({
   },
   //事件处理函数
   topay: function () {
-    wx.switchTab({
-      url: './recorddetail/recorddetail'
-    })
     if (this.data.Money < 1)
       Show.alertShow(this, "info", "最小金额1元");
     if (this.data.Number < 1)
       Show.alertShow(this, "info", "最小数量为1");
-    
     console.log(this.data);
-    wx.request({
-      url: 'http://169.254.212.234:8080/springmvc/saverecord', 
-      method: 'post',
-      data: {
-        userid: this.data.userid,
-        kouling: this.data.kouling,
-        money: this.data.Money,
-        number: this.data.Number,
-        restmoney: this.data.Money,
-        restnumber: this.data.Number,
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
-    })
+    if (this.data.Money && this.data.Number && this.data.kouling)
+      wx.request({
+        url: 'http://169.254.206.101:8080/springmvc/saverecord',
+        method: 'post',
+        data: {
+          userid: this.data.userid,
+          kouling: this.data.kouling,
+          money: this.data.Money,
+          number: this.data.Number,
+          restmoney: this.data.Money,
+          restnumber: this.data.Number,
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          console.log(res.data)
+          wx.switchTab({
+            url: './recorddetail/recorddetail'
+          })
+        }
+      })
   },
   onLoad: function () {
     console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
+    app.getUserInfo(function(userInfo,userid){
       //更新数据
       that.setData({
-        userInfo:userInfo
+        userInfo:userInfo,
+        userid: userid
       })
-      console.dir(userInfo)
-
     })
   },
   // 跳转链接
