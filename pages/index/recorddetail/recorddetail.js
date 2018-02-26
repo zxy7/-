@@ -12,7 +12,7 @@ Page({
     record:{},
     listdetails:[],
     houBaoStyle: 1,
-    speak:0,
+    speak:false,
     tempFilePath:"http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46"
   },
 
@@ -33,7 +33,14 @@ Page({
         that.setData({
           userInfo: res.data.data.user,
           record: res.data.data.record,
-          listdetails: res.data.data.listdetails.map(item => { item.createtime = util.formatTime(item.createtime.time); return item }),
+          listdetails: res.data.data.listdetails.map(item => { 
+            item.createtime = util.formatTime(item.createtime.time);
+            if (app.globalData.userid == item.userid) {
+              that.setData({
+                speak:true
+              })
+            }
+            return item }),
           houBaoStyle: options.houBaoStyle,
         })
       }
@@ -42,9 +49,9 @@ Page({
   toshareChat: function () {
 
   },
-  playvoice:function(){
+  playvoice: function (tempFilePath){
     const backgroundAudioManager = wx.getBackgroundAudioManager()
-    backgroundAudioManager.src = this.data.tempFilePath 
+    backgroundAudioManager.src =tempFilePath 
 
   },
   speaking: function (){
@@ -63,10 +70,12 @@ Page({
     recorderManager.onStop((res) => {
       console.log('recorder stop', res)
       wx.request({
-        url: 'http://169.254.206.101:8080/springmvc/test/1', //仅为示例，并非真实的接口地址
+        url: 'http://169.254.206.101:8080/springmvc/savedetail', 
+        method:"post",
         data: {
-          x: '',
-          y: ''
+          voice: res.tempFilePath,
+          userid: app.globalData.userid,
+          recordid:that.data.record.recordid,
         },
         header: {
           'content-type': 'application/json' // 默认值
@@ -97,7 +106,7 @@ Page({
       sampleRate: 44100,
       numberOfChannels: 1,
       encodeBitRate: 192000,
-      format: 'aac',
+      format: 'mp3',
       frameSize: 50
     }
 
