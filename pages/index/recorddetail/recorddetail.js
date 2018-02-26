@@ -1,4 +1,6 @@
 // pages/index/recorddetail/recorddetail.js
+
+var util = require('../../../utils/util.js'); 
 var app = getApp();
 Page({
 
@@ -6,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: [],
+    userInfo: {},
+    record:{},
+    listdetails:[],
     houBaoStyle: 1,
     speak:0,
     tempFilePath:"http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46"
@@ -18,9 +22,22 @@ Page({
   onLoad: function (options) {
     var that = this;
     console.log(options.recordid);
-    that.setData({
-      userInfo: app.globalData.userInfo,
-      houBaoStyle: options.houBaoStyle,
+    wx.request({
+      url: 'http://169.254.206.101:8080/springmvc/searchrecord/' + options.recordid,
+      method: 'post',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          userInfo: res.data.data.user,
+          record: res.data.data.record,
+          listdetails: res.data.data.listdetails.map(item => { item.createtime = util.formatTime(item.createtime.time); return item }),
+          houBaoStyle: options.houBaoStyle,
+        })
+       // console.log( res.data.data.listdetails.map(item => { item.createtime =util.formatTime(item.createtime.time);return item}))
+      }
     })
   },
   toshareChat: function () {

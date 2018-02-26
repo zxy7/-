@@ -3,11 +3,11 @@
   <view class='con'>
     <view class='topBox'style="background:url('../../../img/lingquBg.png') no-repeat;background-size:750rpx 544rpx;">
       <view class='share_box'>
-        <image src='{{userInfo.avatarUrl}}'
+        <image src='{{userInfo.userimage}}'
               mode='widthFix' class='header'></image>
       </view>
       <view class="share_box">
-        <view class='kouling'> {{userInfo.nickName}}</view>
+        <view class='kouling'> {{userInfo.username}}</view>
       </view>
       <view class='ChangeHot'>
         <view class="share_box" >
@@ -28,22 +28,22 @@
       </view>
     </view>
     <view class='hotMoneyNum'>
-        <view class='fl'>共1.00元，已领取0/1个</view>
+        <view class='fl'>共{{record.money}}元，已领取{{record.number-record.restnumber}}/{{record.number}}个</view>
         <view class='fr'>投诉</view>
     </view>
-    <view class='peopleMoney'>
+    <view class='peopleMoney' wx:for="{{listdetails}}" wx:key="detailid">
       <view class='peopleMoney_Left fl'>
-        <image src='{{userInfo.avatarUrl}}' mode='widthFix' class='header_logo'></image>
+        <image src='{{item.userimage}}' mode='widthFix' class='header_logo'></image>
       </view>
       <view class='peopleMoney_center fl'>
-        <text class='people_NickName'>{{userInfo.nickName}}</text>
+        <text class='people_NickName'>{{item.username}}</text>
         <icon></icon>
-        <view class='yuying_time' bindtap='playvoice'>2"</view>
+        <view class='yuying_time' bindtap='playvoice'>{{item.voicetime}}"</view>
       </view>
       <view class='peopleMoney_right fr'>
         <view class='yuying_time_right'>
-          <view class='right_Num'>1.00元</view>
-          <view class='right_time'>2017-12-31</view>
+          <view class='right_Num'>{{item.earn}}元</view>
+          <view class='right_time'>{{item.createtime}}</view>
         </view>
       </view>
     </view>

@@ -27,7 +27,7 @@
       {
         "iconPath": "img/icon_normal.png",
         "selectedIconPath": "img/icon_pressed.png",
-        "pagePath": "pages/index/recorddetail/recorddetail",
+        "pagePath": "pages/money/money",
         "text": "余额提现"
       },
       {

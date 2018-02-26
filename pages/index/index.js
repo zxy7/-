@@ -37,8 +37,8 @@ Page({
         },
         success: function (res) {
           console.log(res.data)
-          wx.switchTab({
-            url: './recorddetail/recorddetail'
+          wx.navigateTo({
+            url: './recorddetail/recorddetail?recordid='+res.data.data
           })
         }
       })
@@ -59,7 +59,8 @@ Page({
   tomyRecord: function () {
     var that = this;
     wx.navigateTo({
-      url: './myrecord/myrecord',
+      // url: './myrecord/myrecord',
+      url: './recorddetail/recorddetail?recordid=RD201802236533718449',
     })
 
   },
