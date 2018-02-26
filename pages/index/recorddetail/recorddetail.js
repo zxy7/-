@@ -36,7 +36,6 @@ Page({
           listdetails: res.data.data.listdetails.map(item => { item.createtime = util.formatTime(item.createtime.time); return item }),
           houBaoStyle: options.houBaoStyle,
         })
-       // console.log( res.data.data.listdetails.map(item => { item.createtime =util.formatTime(item.createtime.time);return item}))
       }
     })
   },
