@@ -22,7 +22,7 @@ Page({
     console.log(this.data);
     if (this.data.Money && this.data.Number && this.data.kouling)
       wx.request({
-        url: 'http://169.254.206.101:8080/springmvc/saverecord',
+        url: 'https://www.zxy7.xin/springmvc/saverecord',
         method: 'post',
         data: {
           userid: this.data.userid,

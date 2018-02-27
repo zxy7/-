@@ -1,7 +1,7 @@
 <!--pages/index/recorddetail/recorddetail.wxml-->
 <view class='container'>
   <view class='con'>
-    <view class='topBox'style="background:url('../../../img/lingquBg.png') no-repeat;background-size:750rpx 544rpx;">
+    <view class='topBox'style="background:url('../../../img/lingquBg.png') no-repeat;background-size:750rpx 544rpx;padding-top:10px">
       <view class='share_box'>
         <image src='{{userInfo.userimage}}'
               mode='widthFix' class='header'></image>
@@ -11,11 +11,15 @@
       </view>
       <view class='ChangeHot'>
         <view class="share_box" >
-          <view class='yuyin'><text class="iconfont icon-hongbao">发了一个语音口令  </text></view>
+          <view class='yuyin'>
+            <text class="iconfont icon-hongbao">发了一个语音口令  </text>
+          </view>
         </view>
         <view class='share_box_ju'>
-          <view class='showLing' wx:if="{{!speak}}" bindlongtap='speaking'>按住说出以上口令领取赏金</view>
-          <view class="moneyNum" wx:if="{{speak}}">1.00<text class='fontSize'>元</text> </view>
+          <view style='text-align:center;font-size:30px;color:#fde2b3'>{{record.kouling}}</view>
+
+          <button class='showLing' wx:if="{{!speak}}" disabled="{{disabled}}" bindlongpress='speaking'>{{notice}}</button>
+          <view class="moneyNum" wx:if="{{speak}}">{{earn}}<text class='fontSize'>元</text> </view>
         </view>
       </view>
 
@@ -38,7 +42,7 @@
       <view class='peopleMoney_center fl'>
         <text class='people_NickName'>{{item.username}}</text>
         <icon></icon>
-        <view class='yuying_time' bindtap='playvoice(item.voice)'>{{item.voicetime}}"</view>
+        <view class='yuying_time' data-voice='item.voice' bindtap='playvoice'>{{item.voicetime}}"</view>
       </view>
       <view class='peopleMoney_right fr'>
         <view class='yuying_time_right'>

@@ -17,7 +17,7 @@ App({
           if (res.code) {
             //获取openid
             wx.request({
-              url: 'http://169.254.206.101:8080/springmvc/getopenid',
+              url: 'https://www.zxy7.xin/springmvc/getopenid',
               method: 'post',
               header: {
                 'content-type': 'application/json' // 默认值
@@ -30,7 +30,7 @@ App({
                   success: function (res2) {
                     that.globalData.userInfo = res2.userInfo
                     wx.request({
-                      url: 'http://169.254.206.101:8080/springmvc/saveuser',
+                      url: 'https://www.zxy7.xin/springmvc/saveuser',
                       method: 'post',
                       data: {
                         username: res2.userInfo.nickName,
