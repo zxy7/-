@@ -55,15 +55,6 @@ Page({
       })
     })
   },
-  // 跳转链接
-  tomyRecord: function () {
-    var that = this;
-    wx.navigateTo({
-      // url: './myrecord/myrecord',
-      url: './recorddetail/recorddetail?recordid=RD201802236533718449',
-    })
-
-  },
   // 获取页面填入的值
   koulingInput: function (e) {
     var that = this;

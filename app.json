@@ -19,22 +19,22 @@
     "backgroundColor":"#fff",
     "list": [
       {
-        "iconPath": "img/icon_normal.png",
-        "selectedIconPath": "img/icon_pressed.png",
+        "iconPath": "img/home2.png",
+        "selectedIconPath": "img/home1.png",
         "pagePath": "pages/index/index",
-        "text": "我的记录"
+        "text": "首页"
       },
       {
-        "iconPath": "img/icon_normal.png",
-        "selectedIconPath": "img/icon_pressed.png",
+        "iconPath": "img/money2.png",
+        "selectedIconPath": "img/money1.png",
         "pagePath": "pages/money/money",
-        "text": "余额提现"
+        "text": "余额"
       },
       {
-        "iconPath": "img/icon_normal.png",
-        "selectedIconPath": "img/icon_pressed.png",
-        "pagePath": "pages/logs/logs",
-        "text": "日志"
+        "iconPath": "img/record2.png",
+        "selectedIconPath": "img/record1.png",
+        "pagePath": "pages/index/myrecord/myrecord",
+        "text": "记录"
       }
     ]
   },
