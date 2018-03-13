@@ -1,4 +1,6 @@
 // pages/index/myrecord/myrecord.js
+
+var util = require('../../../utils/util.js');
 var app = getApp();
 Page({
 
@@ -8,26 +10,9 @@ Page({
   data: {
     mineRecod: 1,
     userInfo: [],
-    money:1.2,
-    num:1,
-    sendrecords:[
-      {
-        recordid:'1',
-        title: "aaaaa",
-        allmoney:20,
-        time:111111,
-        restnum:1,
-        allnum:1
-      },
-      {
-        recordid: '2',
-        title: "aaaaa",
-        allmoney:20,
-        time:111111,
-        restnum:1,
-        allnum:1
-      },
-    ],
+    money:0,
+    num:0,
+    sendrecords:[],
     getrecords: [
       {
         recordid: '1',
@@ -52,8 +37,28 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      userInfo: app.globalData.userInfo,
+    wx.request({
+      // url: 'http://localhost/springmvc/searchmyrecords/' + app.globalData.userInfo.userid,
+      url: 'http://localhost:8080/springmvc/searchmyrecords/AC201802223496051876',
+      method: 'post',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.setData({
+          userInfo: app.globalData.userInfo,
+          sendrecords: res.data.data.sendrecords.map(item => {
+            item.createdate = util.formatTime(item.createdate.time);
+            that.setData({
+              money:that.data.money+item.money,
+            })
+            return item
+          }),
+          // money: res.data.data.sendrecords.,
+          num: res.data.data.sendrecords.length,
+        })
+      }
     })
   },
   // tab 切换函数

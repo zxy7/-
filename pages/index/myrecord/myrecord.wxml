@@ -27,12 +27,12 @@
     <navigator class='hotPeopleDetail' wx:if="{{mineRecod==1}}" wx:for="{{sendrecords}}"  wx:key="recordid" url="/pages/index/recorddetail/recorddetail?recordid={{item.recordid}}">
       <view class='peopleBox'>
         <view class='people'>
-          <view class='fl'>{{item.title}}</view>
-          <view class='fr'>{{item.allmoney}}元</view>
+          <view class='fl'>{{item.kouling}}</view>
+          <view class='fr'>{{item.money}}元</view>
         </view>       
         <view class='time'>
-          <view class='fl'>{{item.time}}</view>
-          <view class='fr'>{{item.restnum}}/{{item.allnum}}</view>
+          <view class='fl'>{{item.createdate}}</view>
+          <view class='fr'>{{item.restnumber}}/{{item.number}}</view>
         </view>
       </view>
     </navigator>
