@@ -51,7 +51,10 @@
         </view>
       </view>
     </view>
-    <view class='jilu'>查看我的记录</view>
+    <view class='jilu'>
+      <navigator url="../myrecord/myrecord" open-type="switchTab">查看我的记录
+      </navigator>
+    </view>
     <view class='weilingqu'>未领取的金额，将于24小时后退还到余额</view>
   </view>
 </view>

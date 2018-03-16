@@ -10,26 +10,12 @@ Page({
   data: {
     mineRecod: 1,
     userInfo: [],
-    money:0,
-    num:0,
+    getmoney:0,
+    getnum:0,
+    sendmoney:0,
+    sendnum:0,
     sendrecords:[],
-    getrecords: [
-      {
-        recordid: '1',
-        name: "aaaaa",
-        imgsrc: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKCPhTeW9YgEAA5JMicOQBobibXx7O4V0G7S7TXic0lyzDL5LrPCQKIOCsSDTH0uY6np4kZz7kScPusQ/0",
-        getmoney: 1.0,
-        time: 111111
-      },
-      {
-        recordid: '2',
-        name: "aaaaa",
-        imgsrc: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKCPhTeW9YgEAA5JMicOQBobibXx7O4V0G7S7TXic0lyzDL5LrPCQKIOCsSDTH0uY6np4kZz7kScPusQ/0",
-        getmoney: 2.0,
-        time: 111111
-      },
-
-    ],
+    getrecords: [],
   },
 
   /**
@@ -38,25 +24,30 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      // url: 'http://localhost/springmvc/searchmyrecords/' + app.globalData.userInfo.userid,
-      url: 'http://localhost:8080/springmvc/searchmyrecords/AC201802223496051876',
+      url: 'https://www.zxy7.xin/springmvc/searchmyrecords/' + app.globalData.userid,
       method: 'post',
       header: {
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({
           userInfo: app.globalData.userInfo,
           sendrecords: res.data.data.sendrecords.map(item => {
             item.createdate = util.formatTime(item.createdate.time);
             that.setData({
-              money:that.data.money+item.money,
+              sendmoney:that.data.sendmoney+item.money,
             })
             return item
           }),
-          // money: res.data.data.sendrecords.,
-          num: res.data.data.sendrecords.length,
+          getrecords: res.data.data.getrecords.map(item => {
+            item.createtime = util.formatTime(item.createtime.time);
+            that.setData({
+              getmoney: that.data.getmoney + item.earn,
+            })
+            return item
+          }),
+          sendnum: res.data.data.sendrecords.length,
+          getnum: res.data.data.getrecords.length,
         })
       }
     })

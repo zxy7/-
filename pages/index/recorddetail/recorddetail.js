@@ -23,7 +23,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(options.recordid);
     wx.request({
       url: 'https://www.zxy7.xin/springmvc/searchrecord/' + options.recordid,
       method: 'post',
@@ -31,7 +30,6 @@ Page({
         'content-type': 'application/json' // 默认值
       },
       success: function (res) {
-        console.log(res.data)
         that.setData({
           userInfo: res.data.data.user,
           record: res.data.data.record,
@@ -86,7 +84,6 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
-          console.log(res.data)
           that.setData({
             record: res.data.data.record,
             listdetails: res.data.data.listdetails.map(item => {

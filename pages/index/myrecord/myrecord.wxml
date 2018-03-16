@@ -15,11 +15,11 @@
       <view class='content_bottom'>
         <view class='Money_Number fl'>
           <view class='Money_name'>金额（元）</view>
-          <view class='money_num'>{{money}}</view>
+          <view class='money_num'>{{mineRecod==1?sendmoney:getmoney}}</view>
         </view>
         <view class='Money_Number fl'>
           <view class='Money_name'>数量（个）</view>
-          <view class='money_num'>{{num}}</view>
+          <view class='money_num'>{{mineRecod==1?sendnum:getnum}}</view>
         </view>
       </view>
     </view>
@@ -39,14 +39,14 @@
 
     <navigator class='hotPeopleDetail' wx:if="{{mineRecod==2}}" wx:for="{{getrecords}}" wx:key="recordid"  url="/pages/index/recorddetail/recorddetail?recordid={{item.recordid}}">
       <view class='peopleBox'>
-        <image src="{{item.imgsrc}}" mode='widthFix' class='people_header fl'></image>
+        <image src="{{item.userimage}}" mode='widthFix' class='people_header fl'></image>
         <view>
           <view class='people'>
-            <view class='fl'>{{item.name}}</view>
-            <view class='fr'>{{item.getmoney}}元</view>
+            <view class='fl'>{{item.username}}</view>
+            <view class='fr'>{{item.earn}}元</view>
           </view>       
           <view class='time'>
-            <view class='fl'>{{item.time}}</view>
+            <view class='fl'>{{item.createtime}}</view>
           </view>
         </view>
       </view>

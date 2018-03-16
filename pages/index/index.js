@@ -19,7 +19,6 @@ Page({
       Show.alertShow(this, "info", "最小金额1元");
     if (this.data.Number < 1)
       Show.alertShow(this, "info", "最小数量为1");
-    console.log(this.data);
     if (this.data.Money && this.data.Number && this.data.kouling)
       wx.request({
         url: 'https://www.zxy7.xin/springmvc/saverecord',
@@ -36,15 +35,15 @@ Page({
           'content-type': 'application/json' // 默认值
         },
         success: function (res) {
-          console.log(res.data)
-          wx.navigateTo({
-            url: './recorddetail/recorddetail?recordid='+res.data.data
-          })
+          if (res.data.data) {
+            wx.navigateTo({
+              url: './recorddetail/recorddetail?recordid='+res.data.data
+            })
+          }
         }
       })
   },
   onLoad: function () {
-    console.log('onLoad')
     var that = this
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo,userid){
@@ -76,4 +75,10 @@ Page({
       Number: parseInt(e.detail.value),
     })
   },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })
